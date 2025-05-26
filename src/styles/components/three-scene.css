@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================\
+   ThreeScene Specific Styles
+   ========================================================================== */
+
+/* Define CSS custom properties for theming */
+:root {
+  --three-scene-bg-color-light: #FFFFFF;
+  --three-scene-bg-color-dark: #1A202C;
+  --three-scene-text-color-light: #1A202C;
+  --three-scene-text-color-dark: #FFFFFF;
+  --three-scene-primary-color-light: #2563EB;
+  --three-scene-primary-color-dark: #3B82F6;
+}
+
+/* Core styling for the ThreeScene component */
+.three-scene-container {
+  @apply relative w-full h-full overflow-hidden;
+  background-color: var(--three-scene-bg-color-light);
+}
+
+.dark .three-scene-container {
+  background-color: var(--three-scene-bg-color-dark);
+}
+
+/* Style the 3D canvas */
+.three-scene-canvas {
+  @apply absolute top-0 left-0 w-full h-full;
+  z-index: 1; /* Ensure it's behind other UI elements */
+  pointer-events: auto; /* Enable 3D interactions */
+  will-change: transform; /* Improve GPU rendering */
+}
+
+/* Style for the overlay (if any) */
+.three-scene-overlay {
+  @apply absolute top-0 left-0 w-full h-full pointer-events-none;
+  z-index: 10; /* Ensure it's above the canvas but below other UI */
+  will-change: transform, opacity;
+}
+
+/* ==========================================================================\
+  Responsive Design
+  ========================================================================== */
+
+/* For smaller screens */
+@media (max-width: theme('screens.sm')) {
+  .three-scene-container {
+    /* Add smaller styles */
+  }
+}
+
+/* For larger screens */
+@media (min-width: theme('screens.lg')) {
+  .three-scene-container {
+    /* Add bigger styles */
+  }
+}
+
+/* ==========================================================================\
+  Accessibility Defaults
+  ========================================================================== */
+
+/* Keyboard navigation styles (if keyboard interaction is supported) */
+.three-scene-container:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2 dark:ring-blue-400;
+}
+
+/* ==========================================================================\
+  3D Canvas Integration - Z-Index
+  ========================================================================== */
+
+/* The 3D canvas should be rendered behind other elements*/
+.three-scene-container > canvas {
+    z-index: var(--three-scene-z-index);
+}
+
+/* ==========================================================================\
+  Performance Tuning -  TEST ALL VALUES and report memory / performance benchmarks
+  ========================================================================== */
+
+/* Apply will-change and backface-visibility to improve GPU rendering performance. Check and update the threeJS core values first */
+
+.three-scene-container,
+.three-scene-canvas,
+.three-scene-overlay
+ {
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
