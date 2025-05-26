@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================\
+  ModelLoader Specific Styles
+  ========================================================================== */
+
+.model-loader-container {
+  @apply relative flex items-center justify-center w-full h-full bg-gray-100 dark:bg-gray-800 rounded-md;
+  z-index: 5;
+  will-change: transform;
+}
+
+.model-loading-indicator {
+  @apply flex flex-col items-center justify-center space-y-2;
+}
+
+.model-loading-spinner {
+  @apply animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid dark:border-blue-400;
+  border-bottom-color: transparent;
+  will-change: transform;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.model-progress-bar {
+  @apply w-64 h-2 bg-gray-300 dark:bg-gray-700 rounded-full overflow-hidden relative;
+}
+
+.model-progress-bar-fill {
+  @apply h-full bg-blue-500 dark:bg-blue-400 absolute left-0 top-0;
+  width: 0%; /* Dynamically set in component */
+  will-change: width;
+}
+
+.model-error-message {
+  @apply text-red-500 text-center font-semibold p-4;
+}
+
+.model-fallback-image {
+  @apply max-w-full max-h-full object-contain;
+}
+
+.model-retry-button {
+  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-700 dark:hover:bg-blue-900 transition-colors duration-300;
+  will-change: transform, opacity;
+}
+
+/* ==========================================================================\
+  Responsive Design
+  ========================================================================== */
+
+@media (max-width: theme('screens.sm')) {
+  .model-loading-indicator {
+    @apply space-y-1;
+  }
+
+  .model-loading-spinner {
+    @apply h-8 w-8;
+  }
+
+  .model-progress-bar {
+    @apply w-48 h-1;
+  }
+
+  .model-error-message {
+    @apply text-sm p-2;
+  }
+}
+
+/* ==========================================================================\
+  Accessibility Defaults
+  ========================================================================== */
+
+.model-retry-button:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* ==========================================================================\
+  3D Canvas Integration - Z-Index
+  ========================================================================== */
+
+.model-loader-container > canvas {
+    z-index: 1;
+}
+
+.model-retry-button,
+.model-loading-indicator {
+    z-index: 2;
+}
+
+/* Ensure main layout is always on top */
+/* Add more specific to other elements to go above 12 */
+/* ==========================================================================\
+  Performance Tuning
+  ========================================================================== */
+
+.model-loader-container,
+.model-loading-indicator, 
+.model-loading-spinner, 
+.model-progress-bar, 
+.model-progress-bar-fill {
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, opacity;
+}
