@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================\
+   Header Specific Styles - AAA Compliance
+   ========================================================================== */
+
+/* Core header container - Ensure proper theming and stacking */
+.header-3d-container {
+  @apply py-4 relative;
+  @apply bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200;
+  /* Ensure header is above 3D Canvas */
+  z-index: 15;
+  /* AAA: Ensure high contrast */
+  color: theme('colors.gray.800');
+  background-color: theme('colors.white');
+
+  /* Add transition for theme changes */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark .header-3d-container {
+  color: theme('colors.gray.200');
+  background-color: theme('colors.gray.800');
+}
+
+/* Contained layout and responsive adjustments */
+.header-3d-container-inner {
+  @apply container mx-auto px-4 flex items-center justify-between;
+}
+
+/* Logo and brand elements */
+.header-logo {
+  @apply mr-2 h-8 w-8;
+}
+
+.header-logo-text {
+  @apply font-bold dark:text-white transition-colors duration-300;
+}
+
+/* Navigation links - Base properties. */
+.header-navigation {
+  @apply hidden md:flex items-center;
+}
+
+/* Nav links need to follow a description of link  AAA */
+.header-link {
+  @apply mr-4 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200;
+  text-decoration: none;
+  will-change: transform; /* improve performance */
+}
+
+.header-link:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2 dark:ring-blue-400;
+}
+
+/* Mobile menu icon */
+.header-toggle-button {
+  @apply md:hidden focus:outline-none;
+}
+
+/* ==========================================================================\
+   3D Enhancements - Make 3D has AA Compliance as core in the mesh
+   ========================================================================== */
+
+/* Optional 3D background container - The user needs control and needs to pass what this element has  AAA */
+.header-3d-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Ensure it's behind the content */
+  z-index: -1;
+  opacity: 0.1;
+}
+
+/* 3D touch test - Follow basic rules */
+.header-3d-container,
+.header-logo,
+.header-logo-text,
+.header-navigation,
+.header-link,
+.header-toggle-button {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* ==========================================================================\
+   Responsive Design - Test All to follow the design guidelines
+   ========================================================================== */
+
+@media (max-width: theme('screens.md')) {
+  .header-navigation {
+    @apply hidden; /* Hide on smaller devices */
+  }
+
+  .header-toggle-button {
+    @apply block; /*Show only on smaller devices */
+  }
+}
+
+/* Test that the screen on the header it does work good always */
+/* Keyboard support AAA or 3D */
+/* If all tests, there a way that loads what 3D does. Or a img */
+
+/* ==========================================================================\
+  Hamburger Button Icon
+   ========================================================================== */
+/*  Mobile icon, has to load and it must work */
+
+/* ==========================================================================\
+   Accessibility Defaults - Keyboard/Web Test
+   ========================================================================== */
+
+.header-toggle-button:focus,
+.header-link:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2 dark:ring-blue-400;
+  /* Match the theme with the color. If not, fail. Test AAA. - AAA compliance requires that the code does provide a option*/
+}
+
+/* ==========================================================================\
+   Customization - Set a clear method to see code
+   ========================================================================== */
+
+/* Create a file to change. Add a default object on file. Easy so the user can add. A11y and 3D
+   This configuration can increase user AAA and help the 3D object to stay more friendly. Always test the cases and fix 3D.
+*/
