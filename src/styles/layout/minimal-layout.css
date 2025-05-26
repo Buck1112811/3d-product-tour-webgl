@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================\
+   MinimalLayout Specific Styles
+   ========================================================================== */
+
+.minimal-layout-container {
+    @apply flex flex-col min-h-screen;
+    @apply bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+    font-family: var(--font-family-base);
+    /* Enable smooth scrolling */
+    scroll-behavior: smooth;
+    /* Hardware acceleration */
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, opacity;
+}
+
+/* Style the header area */
+.minimal-layout-header {
+    /* Flex layout, padding, border and dark mode */
+    @apply bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 py-4;
+
+    /* Contained layout */
+    .container {
+        @apply mx-auto px-4 flex items-center justify-between;
+    }
+}
+
+/* Style the main content area */
+.minimal-layout-main {
+    @apply flex-grow;
+    /* Container for main body and 3D */
+    .container {
+        @apply mx-auto;
+    }
+}
+
+/* Style the footer area */
+.minimal-layout-footer {
+    /* Centered and Flex Layout */
+    @apply bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 py-4;
+
+    /* Contained layout */
+    .container {
+        @apply mx-auto px-4 flex items-center justify-between;
+    }
+}
+
+/* ==========================================================================\
+   Responsive Design - Base file settings
+   ========================================================================== */
+
+/* Test all devices. Use this code for quick actions */
+@media (max-width: theme('screens.sm')) {
+    /* Apply smaller font and change. Base test with hardware test.*/
+}
+
+@media (min-width: theme('screens.lg')) {
+    /* Bigger font and spacing test.*/
+}
+
+/* ==========================================================================\
+   Accessibility Defaults
+   ========================================================================== */
+
+/*Focus outline is the same color for main theme and website.
+   - Keyboard Access is setup
+   - Screen Redaer is in
+    - AAA = AA checks should pass.
+
+        - Make sure the same code if the test happens and also make sure there is a description for the elements.
+*/
+a:focus,
+button:focus {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2 dark:ring-blue-400;
+}
+
+/* ==========================================================================\
+   Performance Tuning - Test Web code on test files or web views after that the code can't change.
+      * - Lighthouse is best.
+   ========================================================================== */
+
+/* If the test code is not correct use fallback to load old file.*/
+
+/* This style is also what we show to device what has or not hardware or slow devices so all needs to pass here. ADA or access is what matters. All that code is not ok is skipped*/
+/* Should look 30 for a test hardware on GPU to make 144 test pass. This are base to make all work. All 3 test are in great value.*/
+
+/* ==========================================================================\
+      *   Make sure what test work on GPU and MEM is under the limit and create the best way, 
+      *  Create good values on desktop/mobile/tablet. Every test that breaks needs to fixed or skip for performance and test reasons.
+     * Ensure and double-check device, The JS needs to create or check this points on base:
+  ========================================================================== */
+
+/*
+  - The theme is here 
+  - To add for responsive
+  - Web check needs
+  - Aaa test.
+*/
