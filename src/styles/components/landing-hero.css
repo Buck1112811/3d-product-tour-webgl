@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================\
+   Landing Hero Specific Styles
+   ========================================================================== */
+
+.hero-section {
+    @apply py-20 relative overflow-hidden;
+}
+
+.hero-container {
+    @apply container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center;
+}
+
+.hero-text-container {
+    @apply text-center md:text-left;
+}
+
+.hero-title {
+    @apply text-4xl font-bold mb-4 dark:text-white leading-tight;
+}
+
+.hero-subtitle {
+    @apply text-lg mb-8 dark:text-gray-400;
+}
+
+.hero-cta {
+    @apply inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-700 dark:hover:bg-blue-900 transition-colors duration-300;
+}
+
+/* 3D Integration */
+/* Styles specific to the 3D canvas and overlay */
+.hero-3d-container {
+    @apply relative;
+    will-change: transform; /* Improve GPU rendering */
+}
+
+/* Ensure proper stacking context */
+.hero-3d-canvas {
+    @apply absolute top-0 left-0 w-full h-full z-[1] pointer-events-auto;
+}
+
+.hero-3d-overlay {
+    @apply absolute top-0 left-0 w-full h-full z-[10] pointer-events-none;
+}
+
+/* ==========================================================================\
+   Responsive design configurations - TailWind Breakpoints
+   ========================================================================== */
+
+@media (max-width: theme('screens.md')) {
+    .hero-container {
+        @apply grid-cols-1;
+    }
+}
+
+/* ==========================================================================\
+   Accessibility Defaults
+   ========================================================================== */
+
+/* Provide clear focus indicator */
+.hero-cta:focus {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* ==========================================================================\
+  Performance tuning - Test all devices that the CSS provides
+  ========================================================================== */
+
+/* Add custom performance and ensure CSS is valid and working as a plus*/
+
+/* Test by Lighthouse for perform and code or CSS */
+
+/* ADA WCAG AA compliance - Make sure the best configuration is what we find and test results */
