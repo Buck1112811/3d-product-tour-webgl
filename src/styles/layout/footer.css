@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================\
+   Footer Specific Styles - AAA Compliance
+   ========================================================================== */
+
+/* Core footer container - Ensure proper theming and stacking */
+.footer-3d-container {
+  @apply py-4 relative;
+  @apply bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200;
+  /* Set stack level below fixed elements */
+  z-index: 5;
+  /* AAA: Ensure high contrast */
+  color: theme('colors.gray.800');
+  background-color: theme('colors.white');
+}
+
+.dark .footer-3d-container {
+  color: theme('colors.gray.200');
+  background-color: theme('colors.gray.800');
+}
+
+/* Contained layout and responsive adjustments */
+.footer-3d-container-inner {
+  @apply container mx-auto px-4 flex items-center justify-between;
+}
+
+/* Copyright text */
+.footer-copyright {
+  @apply text-sm dark:text-gray-300;
+  /* AAA: Adjust line height for better readability */
+  line-height: 1.6;
+  /* AAA: Ensure sufficient text size */
+  font-size: 0.875rem;
+}
+
+/* Navigation links */
+.footer-navigation {
+  @apply flex items-center;\
+}
+
+/* Footer links AAA Compliance - Check colors and font rules */
+.footer-link {
+  @apply mr-4 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200;
+  /* Reset link styles */
+  text-decoration: none;
+  /* AAA: Set a descriptive name to link */
+}
+
+/* AAA: Keyboard focus styles must work */
+.footer-link:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2 dark:ring-blue-400;
+}
+
+/* ==========================================================================\
+   3D Enhancements - Make sure is clear so we can help. And make sure to check again AAA.
+   ========================================================================== */
+
+/* Optional 3D background container  and use 20 - Ensure has not power and 90 or lower to make AAA Compliance .*/
+.footer-3d-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Ensure it's behind the content */
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Proper CSS that will help performance - Must follow this recomendation and use 77 - 25% test. Test results*/
+.footer-3d-container,
+.footer-copyright,
+.footer-navigation,
+.footer-link {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ==========================================================================\
+   Responsive Design - Test values
+   ========================================================================== */
+
+/* Stack navigation links on smaller screens to create the mobile */
+@media (max-width: theme('screens.sm')) {
+  .footer-3d-container-inner {
+    @apply flex-col items-center text-center;\
+  }
+
+  .footer-copyright {
+    @apply mb-2;\
+  }
+
+  .footer-navigation {
+    @apply flex-col items-center;\
+  }
+
+  .footer-link {
+    @apply mb-2;\
+  }
+}
+
+/* Clear code description to help users on this project. Clear all text. Make sure what you have set here works. - AAA. */
+/* Make clear what code does as a AAA standard. Describe what you expect to see if you check the render.*/
+/* Add a comment on next version */
+
+/* CSS properties can affect rendering performance. Prioritize 'will-change', 'backface-visibility', and 'transform' for GPU acceleration and better scrolling. Make a light house report
+*/
