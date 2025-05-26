@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   Normalize and Base Element Styling
+   ========================================================================== */
+
+/* Resetting browser defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #212529; /* Dark Grey */
+  background-color: #FFFFFF; /* White */
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body.dark {
+  color: #F7F9FA; /* Light Grey */
+  background-color: #212529; /* Dark Grey */
+}
+
+/* Basic typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #339AF0; /* Blue */
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #20C997; /* Teal */
+}
+
+/* List styles */
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+/* ==========================================================================
+  Custom CSS Variables (Theming & Responsive)
+  ========================================================================== */
+
+:root {
+  /* -- Color Palette -- */
+  --primary-light: #2563eb; /* Blue */
+  --primary-dark: #3b82f6;
+  --secondary-light: #f59e0b; /* Orange */
+  --secondary-dark: #fbbf24;
+  --surface-light: #ffffff; /* White */
+  --surface-dark: #1a1a1a;
+  --text-light: #1a1a1a; /* Black */
+  --text-dark: #ffffff;
+  --accent-light: #10b981; /* Teal */
+  --accent-dark: #34d399;
+  --border-light: #d1d5db; /* Light Gray */
+  --border-dark: #4b5563; /* Dark Gray */
+
+  /* -- Typography -- */
+  --font-family-base: 'Open Sans', sans-serif;
+  --font-family-display: 'Open Sans', sans-serif;
+  --font-weight-display: 700;
+  --font-weight-headings: 700;
+  --font-weight-body: 400;
+  --font-size-base: 16px;
+  --font-size-display: 4rem;
+  --font-size-h1: 3rem;
+  --font-size-h2: 2.5rem;
+  --font-size-h3: 2rem;
+  --font-size-h4: 1.5rem;
+  --font-size-h5: 1.25rem;
+  --font-size-h6: 1rem;
+
+  /* -- Spacing Scale -- */
+  --spacing-3xs: 0.25rem;
+  --spacing-2xs: 0.5rem;
+  --spacing-xs: 0.75rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+
+  /* -- Responsive Breakpoints -- */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* -- 3D Related Variables -- */
+  --z-index-overlay: 10;
+  --z-index-3d-canvas: 1;
+  --shadow-density: 0.2;
+  --bloom-strength: 0.8;
+}
+
+/* Dark mode overrides */
+.dark {
+  color-scheme: dark;
+  --text-color: var(--text-dark);
+  --background-color: var(--surface-dark);
+}
+
+/* ==========================================================================
+   Accessibility Defaults
+   ========================================================================== */
+
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Core 3D Integration - DO NOT ALTER THIS CODE
+   ========================================================================== */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-index-3d-canvas);
+    pointer-events: auto;
+  }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-index-overlay);
+    pointer-events: none;
+  }
+
+/* ==========================================================================
+ * Responsive design configurations
+ ========================================================================== */
+
+/* == Test this file to find any problems
+ * ===  Test all classes with automated tests
+ * === Make sure all tests are covered or add to known cases.
+ ========================================================================== */
+
+/* == Secure every code and file before setting to Production
+ * ========================================================================== */
+/* ==========================================================================
+ * Performance - Run lighthouse and web performance
+ ========================================================================== */
+
+/* WCAG Check and WCAG compliant */
+/* ADA The ADA check must have it and need to use keyboard for 3D - AAA score */
+
+/*  This file sets all configurations. Set and be care to not change or set something wrong */
+/* If test fail then follow test to make 100 points on all devices */
+
+:root {
+    --desktop:1280px;
+    --mobile:768px;
+}
+
+@import './layout/header.css';
+@import './layout/footer.css';
+@import './layout/minimal-layout.css';
+
+@import './components/landing-hero.css';
+@import './components/scroll-scene.css';
+@import './components/model-loader.css';
+@import './components/three-scene.css';
+
+@import './pages/model-showcase.css';
+@import './pages/home.css';
