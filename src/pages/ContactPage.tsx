@@ -1,12 +1,12 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useTheme } from '../../context/ThemeContext';
-import MinimalLayout from '../../components/layout/MinimalLayout';
-import '../../styles/pages/contact.css';
+import { useTheme } from '@/context/ThemeContext';
+import MinimalLayout from '@/components/layout/MinimalLayout';
+// import '../../styles/pages/contact.css';
 import * as THREE from 'three';
-import { Canvas, useThree } from '@react-three/fiber';
+import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
 interface ContactPageProps {}

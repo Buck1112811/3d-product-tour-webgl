@@ -71,3 +71,5 @@ const Header: React.FC<HeaderProps> = React.memo(({ isMenuOpen, toggleMenu }) =>
     </header>
   );
 });
+
+export default Header;

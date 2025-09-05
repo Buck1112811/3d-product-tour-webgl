@@ -38,8 +38,8 @@ const ThreeScene: React.FC<ThreeSceneProps> = memo(({ children }) => {
   useEffect(() => {
     gl.shadowMap.enabled = true;
     gl.shadowMap.type = THREE.PCFSoftShadowMap;
-    gl.physicallyCorrectLights = true;
-    gl.outputEncoding = THREE.sRGBEncoding;
+    gl.useLegacyLights = false;
+    gl.outputColorSpace = THREE.SRGBColorSpace;
     gl.toneMapping = THREE.ACESFilmicToneMapping;
     gl.toneMappingExposure = 1;
 

@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useThree } from '@react-three/fiber';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { three3DHelpersUtil } from '../utils/three-helpers';
-import { useTheme } from '../context/ThemeContext';
+import { three3DHelpersUtil } from '@/utils/three-helpers';
+import { useTheme } from '@/context/ThemeContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,7 +19,7 @@ interface ScrollAnimationOptions {
 }
 
 interface UseScrollAnimationReturn {
-  scrollY: { current: number };
+  scrollY: React.MutableRefObject<number>;
   registerScrollTrigger: (options: ScrollAnimationOptions) => void;
   destroyScrollTriggers: () => void;
   scrollProgress: number;
@@ -31,7 +31,7 @@ interface UseScrollAnimationReturn {
  */
 export const useScrollAnimation = (): UseScrollAnimationReturn => {
   const { scene } = useThree();
-  const scrollY = useRef({ current: 0 });
+  const scrollY = useRef(0);
   const scrollTriggers = useRef<gsap.utils.FnAnimation[]>([])
   const [scrollProgress, setScrollProgress] = useState<number>(0);
 

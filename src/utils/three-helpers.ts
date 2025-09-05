@@ -295,3 +295,13 @@ const disposeMaterial = (material: THREE.Material): void => {
   if (material.emissiveMap) material.emissiveMap.dispose();
   material.dispose();
 };
+
+/**
+ * Main utility object containing all three.js helper functions
+ */
+export const three3DHelpersUtil = {
+  createSphereGeometry,
+  loadTexture,
+  disposeObject,
+  disposeMaterial
+};

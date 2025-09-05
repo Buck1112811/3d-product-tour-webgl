@@ -1,15 +1,16 @@
-import React, { memo, useState, useCallback, useEffect, useRef } from 'react';
+import React, { memo, useState, useCallback, useEffect, useRef, Suspense } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls, Html, useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { Link } from 'react-router-dom';
 import { GLTF, GLTFLoader } from 'three-stdlib';
 import { useInView } from 'react-intersection-observer';
-import { useTheme } from '../../context/ThemeContext';
-import { three3DHelpersUtil } from '../../utils/three-helpers';
-import type { ThreeDComponentProps } from '../../types';
-import MinimalLayout from '../components/layout/MinimalLayout';
-import '../../styles/pages/about.css';
+import { useTheme } from '@/context/ThemeContext';
+import { three3DHelpersUtil } from '@/utils/three-helpers';
+import type { ThreeDComponentProps } from '@/types';
+import MinimalLayout from '@/components/layout/MinimalLayout';
+// import '../../styles/pages/about.css';
 
 interface AboutPageProps extends ThreeDComponentProps { }
 
@@ -53,14 +54,14 @@ const AboutPage: React.FC<AboutPageProps> = memo(({ position = [0, 0, 0], rotati
         setLoadError(error);
         setLoading(false);
       } finally {
-        gltfLoader?.dispose();
+        // GLTFLoader doesn't have dispose method
       }
     };
 
     loadModel();
 
     return () => {
-      gltfLoader?.dispose();
+      // GLTFLoader doesn't have dispose method
     };
   }, []);
 

@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useTheme } from './context/ThemeContext';
+import { useTheme } from '@/context/ThemeContext';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import LandingHero from './components/sections/LandingHero';

@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import { ThemeProvider } from '@/context/ThemeContext';
 
 /**
  * Main entry point for the React application.
@@ -25,7 +26,11 @@ const renderApp = (): void => {
   // 2. React Rendering
   try {
     const root = createRoot(container);
-    root.render(<App />);
+    root.render(
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    );
   } catch (renderError: any) {
     console.error('React rendering error:', renderError);
     container.innerHTML = `<p>Application failed to render. Please check the console for details. ${renderError.message || 'Unknown error'}</p>`;

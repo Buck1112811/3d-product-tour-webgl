@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
-import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader';
+import { GLTFLoader } from 'three-stdlib';
+import { DRACOLoader } from 'three-stdlib';
+import { KTX2Loader } from 'three-stdlib';
 import { MeshoptDecoder } from 'meshoptimizer';
 import { GLTF } from 'three-stdlib';
 import { core } from '@gltf-transform/core';

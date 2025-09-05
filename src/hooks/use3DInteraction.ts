@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import * as THREE from 'three';
 import { useThree } from '@react-three/fiber';
-import { three3DHelpersUtil } from '../utils/three-helpers';
+import { three3DHelpersUtil } from '@/utils/three-helpers';
 
 interface Use3DInteractionProps {
   onHover?: (object: THREE.Object3D | null) => void;

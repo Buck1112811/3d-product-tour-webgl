@@ -16,7 +16,7 @@ export interface LandingHeroProps {
   ctaLink: string;
 }
 
-interface GLTFResult extends THREE.GLTF {
+interface GLTFResult {
   nodes: {
     [key: string]: THREE.Mesh;
   };
@@ -169,7 +169,7 @@ const LandingHero: React.FC<LandingHeroProps> = React.memo(({
                     <mesh
                       key={key}
                       geometry={node.geometry}
-                      material={materials[node.material.name]}
+                      material={Array.isArray(node.material) ? node.material[0] : node.material}
                       castShadow
                       receiveShadow
                     />

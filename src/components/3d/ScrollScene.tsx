@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback, useMemo } from 'react';
 import * as THREE from 'three';
 import { useThree, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -54,7 +54,7 @@ const ScrollScene: React.FC<ThreeSceneProps> = React.memo(({ children }) => {
 
   useFrame(() => {
     if (!camera || !container.current) return;
-    const scrollPosition = scrollY.get();
+    const scrollPosition = scrollY.current;
 
     const newX = initialCameraPosition.x + scrollPosition * 0.5;
     const newY = initialCameraPosition.y + scrollPosition * 0.1;

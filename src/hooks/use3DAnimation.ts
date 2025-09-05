@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import * as THREE from 'three';
 import { useThree } from '@react-three/fiber';
 import gsap from 'gsap';
-import { three3DHelpersUtil } from '../utils/three-helpers';
+import { three3DHelpersUtil } from '@/utils/three-helpers';
 
 interface AnimationOptions {
   targets: any;

@@ -1,9 +1,9 @@
 import React, { Suspense, useRef, useEffect, useState, useMemo, useCallback } from 'react';
 import * as THREE from 'three';
 import { useLoader, useThree } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
-import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader';
+import { GLTFLoader } from 'three-stdlib';
+import { DRACOLoader } from 'three-stdlib';
+import { KTX2Loader } from 'three-stdlib';
 import { MeshoptDecoder } from 'meshoptimizer';
 import { Environment, OrbitControls, Html, useGLTF } from '@react-three/drei';
 
@@ -48,7 +48,7 @@ const ModelLoader: React.FC<ModelLoaderProps> = React.memo(({
     const envMap = useMemo(() => {
         return createEnvironmentMap(
           isDarkMode ? colors.darkEnvMap : colors.lightEnvMap,
-          gl.renderer
+          gl
         );
     }, [isDarkMode, colors, gl.renderer]);
 

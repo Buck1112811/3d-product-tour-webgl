@@ -75,7 +75,7 @@ const AdvancedScene: React.FC<ThreeDComponentProps> = React.memo(({
 
   if (error) {
     return (
-      <mesh position={position} scale={scale}>
+      <mesh position={position as [number, number, number]} scale={scale}>
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color="red" wireframe />
       </mesh>
@@ -84,7 +84,7 @@ const AdvancedScene: React.FC<ThreeDComponentProps> = React.memo(({
 
   if (loading) {
     return (
-      <mesh position={position} scale={scale}>
+      <mesh position={position as [number, number, number]} scale={scale}>
         <sphereGeometry args={[0.5, 16, 16]} />
         <meshStandardMaterial color="gray" transparent opacity={0.5} />
       </mesh>
@@ -106,7 +106,7 @@ const AdvancedScene: React.FC<ThreeDComponentProps> = React.memo(({
             <mesh
               key={key}
               geometry={node.geometry}
-              material={materials[node.material.name]}
+              material={Array.isArray(node.material) ? node.material[0] : node.material}
               castShadow={castShadow}
               receiveShadow={receiveShadow}
             />

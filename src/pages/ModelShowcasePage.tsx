@@ -1,14 +1,14 @@
-import React, { memo, useState, useCallback, useEffect, useRef } from 'react';
+import React, { memo, useState, useCallback, useEffect, useRef, Suspense } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { GLTF, GLTFLoader } from 'three-stdlib';
 import { Link, useLocation } from 'react-router-dom';
 
-import MinimalLayout from '../components/layout/MinimalLayout';
-import { useTheme } from '../context/ThemeContext';
-import { three3DHelpersUtil } from '../utils/three-helpers';
-import type { ThreeDComponentProps } from '../types';
+import MinimalLayout from '@/components/layout/MinimalLayout';
+import { useTheme } from '@/context/ThemeContext';
+import { three3DHelpersUtil } from '@/utils/three-helpers';
+import type { ThreeDComponentProps } from '@/types';
 import '../styles/pages/model-showcase.css';
 
 interface ModelShowcasePageProps extends ThreeDComponentProps {
@@ -74,14 +74,14 @@ const ModelShowcasePage: React.FC<ModelShowcasePageProps> = memo(({
         setLoadError(error);
         setLoading(false);
       } finally {
-        gltfLoader?.dispose();
+        // GLTFLoader doesn't have dispose method
       }
     };
 
     loadModel();
 
     return () => {
-      gltfLoader?.dispose();
+      // GLTFLoader doesn't have dispose method
     };
   }, [modelPath]);
 
@@ -119,7 +119,7 @@ const ModelShowcasePage: React.FC<ModelShowcasePageProps> = memo(({
       return <Html center>Loading...</Html>;
     }
 
-    return <primitive object={model} position={position as [number, number, number]} rotation={rotation as [number, number, number]} />;
+    return model ? <primitive object={model} position={position as [number, number, number]} rotation={rotation as [number, number, number]} /> : null;
   };
 
   return (

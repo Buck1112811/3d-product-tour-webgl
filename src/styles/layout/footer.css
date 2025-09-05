@@ -38,7 +38,7 @@
 
 /* Navigation links */
 .footer-navigation {
-  @apply flex items-center;\
+  @apply flex items-center;
 }
 
 /* Footer links AAA Compliance - Check colors and font rules */
@@ -87,19 +87,19 @@
 /* Stack navigation links on smaller screens to create the mobile */
 @media (max-width: theme('screens.sm')) {
   .footer-3d-container-inner {
-    @apply flex-col items-center text-center;\
+    @apply flex-col items-center text-center;
   }
 
   .footer-copyright {
-    @apply mb-2;\
+    @apply mb-2;
   }
 
   .footer-navigation {
-    @apply flex-col items-center;\
+    @apply flex-col items-center;
   }
 
   .footer-link {
-    @apply mb-2;\
+    @apply mb-2;
   }
 }
 

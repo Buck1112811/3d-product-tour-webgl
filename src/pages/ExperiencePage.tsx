@@ -2,13 +2,15 @@ import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } fr
 import * as THREE from 'three';
 import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls, Html, useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+import { GLTFLoader } from 'three-stdlib';
 import { EffectComposer, Bloom, DepthOfField, SSAO } from '@react-three/postprocessing';
-import { useTheme } from '../../context/ThemeContext';
-import { use3DAnimation } from '../../hooks/use3DAnimation';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
-import { three3DHelpersUtil } from '../../utils/three-helpers';
-import type { ThreeDComponentProps } from '../../types';
-import MinimalLayout from '../components/layout/MinimalLayout';
+import { useTheme } from '@/context/ThemeContext';
+import { use3DAnimation } from '@/hooks/use3DAnimation';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { three3DHelpersUtil } from '@/utils/three-helpers';
+import type { ThreeDComponentProps } from '@/types';
+import MinimalLayout from '@/components/layout/MinimalLayout';
 
 const ExperiencePage: React.FC = () => {
   const { isDarkMode } = useTheme();
@@ -121,14 +123,14 @@ const LoadTest: React.FC<TestModelProps> = ({ scale = 1 }) => {
                   setError(error);
                   setLoading(false);
               } finally {
-                  gltfLoader?.dispose();
+                  // GLTFLoader doesn't have dispose method
               }
           };
 
           loadModel();
 
           return () => {
-              gltfLoader?.dispose();
+              // GLTFLoader doesn't have dispose method
           };
       }, []);
 
@@ -189,7 +191,7 @@ const TestReload: React.FC<TestModelProps> = ({ scale = 1 }) => {
                 setError(error);
                 setLoading(false);
             } finally {
-                gltfLoader?.dispose();
+                // GLTFLoader doesn't have dispose method
             }
         };
 

@@ -13,7 +13,7 @@ export interface MinimalLayoutProps {
  * @component
  * @example
  * <MinimalLayout>
- *   {/* Page content */}
+ *   <div>Page content</div>
  * </MinimalLayout>
  */
 const MinimalLayout: React.FC<MinimalLayoutProps> = memo(({ children }) => {
